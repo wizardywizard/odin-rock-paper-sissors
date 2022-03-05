@@ -1,4 +1,7 @@
 let choice = ["rock", "paper", "sissors"]
+let playerScore = 0
+let computerScore = 0
+let winner = ""
 
 function computerPlay () {
     
@@ -7,11 +10,8 @@ function computerPlay () {
 
 function playRound(playerChoice, computerChoice) {
 
-    
-    // var playerChoice = playerChoice.toLowerCase();
-
     if(computerChoice == playerChoice) {
-        return console.log("Tie game go again")
+        winner = "tie"
     } 
     
     if ( 
@@ -19,19 +19,23 @@ function playRound(playerChoice, computerChoice) {
         (playerChoice == "sissors" && computerChoice == "papper") ||
         (playerChoice == "papper" && computerChoice == "rock")
     ) {
-        return console.log("player wins")
-    }
-
-    if (
+        playerScore++
+        winner = "player"
+    } else if ( 
         (computerChoice == "rock" && playerChoice == "sissors") ||
         (computerChoice == "sissors" && playerChoice == "papper") ||
         (computerChoice == "papper" && playerChoice == "rock")
     ) {
-        return console.log("computer wins")
+        computerScore++
+        winner = "computer"   
     }
-
 }
 
-var playerChoice = "rock"
-var computerChoice = computerPlay().toLowerCase();
-console.log(playRound())
+function game() {
+    if (computerScore == 5){
+        return alert("computer wins")
+    } else if (playerScore == 5){
+        return alert("player wins")
+    }
+}
+
